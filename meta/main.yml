@@ -1,8 +1,7 @@
 ---
 galaxy_info:
-  author: Adria Galin Figueras
+  author: Andrew Banman
   description: Set up message of the day (motd)
-  company: Adria Galin
   license: GPLv3
   min_ansible_version: 2.9
   platforms:

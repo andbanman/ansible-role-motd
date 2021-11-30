@@ -1,9 +1,7 @@
-adriagalin.motd
-===============
+ansible-role-motd
+=================
 
-[![Build Status](https://travis-ci.org/adriagalin/ansible.motd.svg?branch=master)](https://travis-ci.org/adriagalin/ansible.motd) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-motd-blue.svg)](https://galaxy.ansible.com/adriagalin/motd)
-
-An ansible role for configuring Message Of The Day (motd) file. By default this role add additional information about the distro and the hardware.
+An ansible role for configuring Message Of The Day (motd) file.
 
 Requirements
 ------------
@@ -23,15 +21,11 @@ Role Variables
 --------------
 
 ```yaml
-ag_motd_remove_default_config: false
-ag_motd_restore_default_config: false
-ag_motd_add_footer: false
-ag_motd_sysadmins_signature: set sysadmin team signature
-ag_motd_sysadmins_email: set sysadmin support email
-ag_motd_content: set content of motd
-ag_motd_info: additional information to show in message
-ag_motd_add_update: false
-ag_motd_update_content: additional dynamic content before motd
+# Name of motd file placed in /etc/update-mot.d. The leading digits determine
+position in the motd
+motd_file: 99-motd
+# Plaintext content to be added to motd
+motd_content:
 ```
 
 Dependencies
@@ -45,35 +39,7 @@ Example Playbook
 ```yaml
     - hosts: servers
       roles:
-         - { role: adriagalin.motd }
-```
-
-This playbook produces the /etc/motd file looking like this:
-
-```
---------------------------------------------------------------------------
-                    This system is managed by Ansible
---------------------------------------------------------------------------
-
-This is host1 running Debian.
-
-NOTE: System and application configuration for this host is managed by
-automated systems. To ensure that any changes you make here are not lost,
-please contact with your system administrators.
-
- FQDN:    host1
- Distro:  Debian 7.8 wheezy
- Virtual: NO
- CPUs:    8
- RAM:     16.0GB
-
-Yours,
-Random system administrators
-email: random@random.com
-
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-Last ansible run: 2015-08-12T23:09:07Z
+         - { role: andbanman.motd }
 ```
 
 License
@@ -84,17 +50,9 @@ GPLv3 License.
 Author Information
 ------------------
 
-[Adrià Galín](http://www.adriagalin.com)
+Andrew Banman
 
 Inspiration
 -----------
 
-During development, some roles in Ansible Galaxy/Github also inspired me:
-
--	[michaelrigart](https://github.com/michaelrigart/ansible-role-motd)
--	[picotrading](https://github.com/picotrading/ansible-motd)
--	[geerlingguy](https://github.com/geerlingguy/ansible-role-mysql)
--	[nickjj](https://github.com/nickjj/ansible-locale)
--	and many others.
-
-thank you.
+[adriagalin/ansible.motd] (https://github.com/adriagalin/ansible.motd)
